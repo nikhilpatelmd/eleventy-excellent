@@ -9,7 +9,7 @@ export const lang = 'en';
 export const skipContent = 'Skip to content';
 export const author = {
   name: 'Nikhil Patel',
-  avatar: '/icon-512x512.png', // path to the author's avatar. In this case just using a favicon.
+  avatar: '/logo.png', // path to the author's avatar. In this case just using a favicon.
   email: 'hello@crit-lit.com', // i.e. hola@lenesaile.com - email of the author
   website: 'https://www.lenesaile.com', // i.e. https.://www.lenesaile.com - the personal site of the author
 };

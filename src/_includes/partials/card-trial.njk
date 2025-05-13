@@ -1,25 +1,22 @@
 {% set headingLevel = headingLevel | default("h2") %}
 {% set definedDate = definedDate | default(item.date) %}
-{% set showTags = showTags | default(true) %}
 
 <custom-card clickable>
   <{{ headingLevel }} slot="headline" class="text-step-2">
     <a href="{{ item.url | url }}">{{ item.data.acronym }}</a>
   </{{ headingLevel }}>
-  <span slot="date">
+  <div slot="tag" webc:nokeep>
+    {% for condition in item.data.conditions %}
+      <span class="button" data-small-button>{{ condition }}</span>
+    {% endfor %}
+  </div>
+
+  <div slot="date">
     {%- if item.data.draft -%}
       <span class="button" data-small-button data-button-variant='tertiary'>draft</span>{%- endif %}
-    {% include "partials/date.njk" %}</span>
-  {% if showTags and item.data.tags.length > 1 %}
-    <div slot="tag" webc:nokeep>
-      {% for tag in item.data.tags %}
-        {% if tag != "posts" %}
-          <span class="button" data-small-button>{{ tag }}</span>
-        {% endif %}
-      {% endfor %}
-    </div>
-  {% endif %}
-  <div slot="content" webc:nokeep>{{ item.data.description | markdownFormat | safe }}</div>
+    {% include "partials/date.njk" %}</div>
+
+  <div slot="content" webc:nokeep>{{ item.data.pico | markdownFormat | safe }}</div>
 </custom-card>
 
 {% css "local" %}
