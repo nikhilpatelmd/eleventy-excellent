@@ -1,15 +1,17 @@
 ---
-title: "INTERACT2" # Full title can be useful
-acronym: "INTERACT2"
+acronym: "INTERACT2" # Full title can be useful
 datePublished: 2013-07-04 # ISO 8601 format (YYYY-MM-DD) is best for sorting
 journal: "New England Journal of Medicine"
-diseaseCategory: "Intracerebral Hemorrhage"
-topic: "Blood Pressure Control"
-funding: "National Health and Medical Research Council of Australia" # Be specific if possible
-tags: ["trial", "ich", "hypertension", "nejm"] # 'trial' is primary, others are for filtering
-layout: trial # Use the custom trial layout
-# Optional: Add a permalink if you want different URL structure
-# permalink: /trials/interact2/
+doi: "10.1056/NEJMoa2408771"
+pmid: "23883300"
+rctIdentifier: "NCT04684563"
+fundingSource: "National Health and Medical Research Council of Australia"
+diseaseCategories: ["Intracerebral Hemorrhage"]
+topics: ["Blood Pressure Control"]
+
+# General tags:
+tags: ["trial", "intervention", "acute stroke", "blood pressure", "hemorrhagic stroke"]
+layout: trial
 ---
 
 ## The Gist
@@ -31,3 +33,5 @@ Key findings...
 ## Analysis
 
 Your critique/interpretation...
+
+
