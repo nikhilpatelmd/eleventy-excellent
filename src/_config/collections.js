@@ -29,14 +29,14 @@ export const tagList = collection => {
   return Array.from(tagsSet).sort();
 };
 
-// Collection for Unique Disease Categories from 'trial' items
-export const uniqueDiseaseCategories = collectionApi => {
+// Collection for Unique Conditions from 'trial' items
+export const uniqueConditions = collectionApi => {
   const allTrials = collectionApi.getFilteredByTag("trial");
   let categoriesSet = new Set(); // Use a Set to store unique values
 
   allTrials.forEach(item => {
-    if (item.data.diseaseCategories && Array.isArray(item.data.diseaseCategories)) {
-      item.data.diseaseCategories.forEach(category => {
+    if (item.data.conditions && Array.isArray(item.data.conditions)) {
+      item.data.conditions.forEach(category => {
         if (category && typeof category === 'string' && category.trim() !== '') {
           categoriesSet.add(category.trim());
         }

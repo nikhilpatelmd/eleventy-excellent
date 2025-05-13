@@ -9,10 +9,10 @@ schema: BlogPosting
     <h1 class="gradient-text">{{ acronym }}</h1>
 
     <div class="tags cluster gutter-xs-s" style="margin-block-end: var(--space-s);">
-      {% if diseaseCategories and diseaseCategories.length > 0 %}
-        {% for category in diseaseCategories %}
-          <a href="/trials/categories/{{ category | slug }}/" class="button category-tag" data-small-button>
-            {{ category }}
+      {% if conditions and conditions.length > 0 %}
+        {% for conditionItem in conditions %}
+          <a href="/conditions/{{ conditionItem | slug }}/" class="button category-tag" data-small-button>
+            {{ conditionItem }}
           </a>
         {% endfor %}
       {% endif %}
@@ -20,7 +20,7 @@ schema: BlogPosting
       {# Assuming 'topic' is a single string. If it can be an array 'topics', you'll need to loop. #}
       {% if topics and topics.length > 0 %}
         {% for topicItem in topics %}
-          <a href="/trials/topics/{{ topicItem | slug }}/" class="button topic-tag" data-small-button>
+          <a href="/topics/{{ topicItem | slug }}/" class="button topic-tag" data-small-button>
             {{ topicItem }}
           </a>
         {% endfor %}
@@ -36,8 +36,8 @@ schema: BlogPosting
              - any tagItem that is already listed in topics
           #}
           {% set isDiseaseCat = false %}
-          {% if diseaseCategories %}
-            {% for cat in diseaseCategories %}
+          {% if conditions %}
+            {% for cat in conditions %}
               {% if cat == tagItem %}{% set isDiseaseCat = true %}
               {% endif %}
             {% endfor %}

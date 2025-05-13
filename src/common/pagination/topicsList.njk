@@ -1,32 +1,32 @@
 ---
 layout: tags
 pagination:
-  data: collections.tagList
+  data: collections.uniqueTopics
   size: 1
-  alias: tag
-permalink: /tags/{{ tag }}/
+  alias: topic
+permalink: /topics/{{ topic | slugify }}/
 eleventyComputed:
-  title: '{{ meta.blog.tagSingle }}: {{ tag }}'
+  title: '{{ topic }}'
 ---
 
 <custom-masonry layout="50-50">
-  {% set itemList = collections[tag] | reverse %}
+  {% set itemList = collections[topic] | reverse %}
   {% for item in itemList %}
 
-		{% include "partials/card-tag.njk" %}
+    {% include "partials/card-tag.njk" %}
   {% endfor %}
 </custom-masonry>
 
 <h2 class="text-step-2">{{ meta.blog.tagMore }}</h2>
 
 <ul class="taglist | my-s-m cluster gutter-s" role="list">
-  {% for tag in collections.tagList %}
+  {% for tag in collections.uniqueTopics %}
     <li>
       <a
-        href="/tags/{{ tag }}"
+        href="/topics/{{ topic | slug}}"
         class="button"
         {{
-          helpers.getLinkActiveState('/tags/' + tag,
+          helpers.getLinkActiveState('/conditions/' + condition,
           page.url)
           |
           safe

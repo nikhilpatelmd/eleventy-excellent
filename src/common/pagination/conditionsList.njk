@@ -1,0 +1,39 @@
+---
+layout: tags
+pagination:
+  data: collections.uniqueConditions
+  size: 1
+  alias: condition
+permalink: /conditions/{{ condition | slugify }}/
+eleventyComputed:
+  title: '{{ condition }}'
+---
+
+<custom-masonry layout="50-50">
+  {% set itemList = collections[condition] | reverse %}
+  {% for item in itemList %}
+
+    {% include "partials/card-tag.njk" %}
+  {% endfor %}
+</custom-masonry>
+
+<h2 class="text-step-2">More conditions</h2>
+
+<ul class="taglist | my-s-m cluster gutter-s" role="list">
+  {% for condition in collections.uniqueConditions %}
+    <li>
+      <a
+        href="/conditions/{{ condition }}"
+        class="button"
+        {{
+          helpers.getLinkActiveState('/conditions/' + condition,
+          page.url)
+          |
+          safe
+        }}
+      >
+        {{ tag }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

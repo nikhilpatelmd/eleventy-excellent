@@ -1,12 +1,16 @@
 export default {
   top: [
     {
-      text: 'Trials',
+      text: 'Trial Summaries',
       url: '/trials/'
     },
     {
-      text: 'Blog',
-      url: '/blog/'
+      text: 'Reviews',
+      url: '/reviews/'
+    },
+    {
+      text: 'Commentary',
+      url: '/commentary/'
     },
     {
       text: 'About',

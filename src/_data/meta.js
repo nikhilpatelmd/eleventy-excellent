@@ -3,7 +3,7 @@ export const url = process.env.URL || 'http://localhost:8080';
 export const domain = new URL(url).hostname;
 export const siteName = 'CritLit';
 export const siteDescription = 'A living repository of influential critical care literature';
-export const siteType = 'Person'; // schema
+export const siteType = 'Blog'; // schema
 export const locale = 'en_EN';
 export const lang = 'en';
 export const skipContent = 'Skip to content';
@@ -16,7 +16,6 @@ export const author = {
 export const creator = {
   name: 'Nikhil Patel',
   email: 'hello@crit-lit.com',
-  website: 'https://www.lenesaile.com',
 };
 export const pathToSvgLogo = 'src/assets/svg/misc/logo.svg'; // used for favicon generation
 export const themeColor = '#dd4462'; // used in manifest, for example primary color value

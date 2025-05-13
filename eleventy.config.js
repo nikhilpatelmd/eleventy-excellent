@@ -21,7 +21,7 @@ import {
   getAllReviews,
   showInSitemap,
   tagList,
-  uniqueDiseaseCategories,
+  uniqueConditions,
   uniqueTopics             
 } from './src/_config/collections.js';
 import events from './src/_config/events.js';
@@ -36,7 +36,7 @@ export default async function (eleventyConfig) {
   // --------------------- layout aliases
   eleventyConfig.addLayoutAlias('base', 'base.njk');
   eleventyConfig.addLayoutAlias('page', 'page.njk');
-  eleventyConfig.addLayoutAlias('post', 'post.njk');
+  eleventyConfig.addLayoutAlias('trial', 'trial.njk');
   eleventyConfig.addLayoutAlias('tags', 'tags.njk');
 
   //	---------------------  Collections
@@ -45,7 +45,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection('allReviews', getAllReviews);
   eleventyConfig.addCollection('showInSitemap', showInSitemap);
   eleventyConfig.addCollection('tagList', tagList);
-  eleventyConfig.addCollection('uniqueDiseaseCategories', uniqueDiseaseCategories);
+  eleventyConfig.addCollection('uniqueConditions', uniqueConditions);
 eleventyConfig.addCollection('uniqueTopics', uniqueTopics);
 
   // ---------------------  Plugins
