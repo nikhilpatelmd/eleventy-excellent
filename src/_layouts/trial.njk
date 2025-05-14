@@ -49,8 +49,10 @@ schema: BlogPosting
               {% endif %}
             {% endfor %}
           {% endif %}
-          {# The "trial" tag is now added by directory data, so no need to explicitly filter it here if it's not in the page's tags array #}
-          {% if not isCondition and not isTopic %}
+
+          {# === MODIFIED CONDITION HERE === #}
+          {# Now also explicitly checks that tagItem is not "trial" #}
+          {% if tagItem != "trial" and not isCondition and not isTopic %}
             <a class="button" href="/tags/{{ tagItem | slugify }}/" data-small-button>
               {{ tagItem }}
             </a>
