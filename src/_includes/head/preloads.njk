@@ -1,6 +1,6 @@
 <link
   rel="preload"
-  href="/assets/fonts/redhat/red-hat-display-v7-latin-900.woff2"
+  href="/assets/fonts/newsreader/newsreader-v25-latin_latin-ext-regular.woff2" {# Updated path and filename #}
   as="font"
   type="font/woff2"
   crossorigin
@@ -8,7 +8,7 @@
 
 <link
   rel="preload"
-  href="/assets/fonts/atkinson/atkinson-hyperlegible-regular.woff2"
+  href="/assets/fonts/newsreader/newsreader-v25-latin_latin-ext-600.woff2" {# Updated path and filename #}
   as="font"
   type="font/woff2"
   crossorigin
@@ -21,5 +21,5 @@
 			href="{{ preloads.href }}"
 			as="{{ preloads.as }}"
 			{% if preloads.type %}type={{ preloads.type }}{% endif %}{% if preloads.imagesrcset %}imagesrcset="{{ preloads.imagesrcset }}"{% endif %}
-			{% if preloads.crossorigin %}crossorigin{% endif %} />
+			{% if preloads.crossorigin %}crossorigin{% endif %}/>
 {% endif %}
