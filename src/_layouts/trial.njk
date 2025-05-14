@@ -3,20 +3,20 @@ layout: base
 schema: BlogPosting
 ---
 
-<div class="region" style="--region-space-top: var(--space-xl-2xl)">
-  <div class="wrapper flow prose">
-    {# Existing Title #}
-    <h1 class="gradient-text">{{ acronym | default(title) }}</h1>
-    {# Fallback to title if acronym is missing #}
+<div class="trial-hero-section | region flow" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l); text-align: center;">
+  <div class="wrapper">
+    {# Div for Acronym & Title #}
+    <div class="hero-title-group flow" style="--flow-space: var(--space-xs); margin-bottom: var(--space-m);">
+      <h1 class="gradient-text">{{ acronym | default(title) }}</h1>
+      {% if title and title != acronym %}
+        <p class="full-title text-step-1" style="margin-top: calc(var(--space-xs) * -1);">
+          <em>{{ title }}</em>
+        </p>
+      {% endif %}
+    </div>
 
-    {% if title and title != acronym %}
-      <p class="full-title text-step-1" style="margin-top: calc(var(--space-s) * -1); margin-bottom: var(--space-l);">
-        <em>{{ title }}</em>
-      </p>
-    {% endif %}
-
-    {# 3. Conditions, Topics, and General Tags Cluster #}
-    <div class="custom-tags-section cluster gutter-xs-s" style="margin-block-end: var(--space-m);">
+    {# Div for Conditions, Topics, Tags Cluster #}
+    <div class="custom-tags-section cluster gutter-xs-s" style="justify-content: center; margin-bottom: var(--space-s);">
       {% if conditions and conditions.length > 0 %}
         {% for conditionItem in conditions %}
           <a href="/conditions/{{ conditionItem | slugify }}/" class="button category-tag" data-small-button>
@@ -24,7 +24,6 @@ schema: BlogPosting
           </a>
         {% endfor %}
       {% endif %}
-
       {% if topics and topics.length > 0 %}
         {% for topicItem in topics %}
           <a href="/topics/{{ topicItem | slugify }}/" class="button topic-tag" data-small-button>
@@ -32,7 +31,6 @@ schema: BlogPosting
           </a>
         {% endfor %}
       {% endif %}
-
       {% if tags and tags.length > 0 %}
         {% for tagItem in tags %}
           {% set isCondition = false %}
@@ -49,183 +47,132 @@ schema: BlogPosting
               {% endif %}
             {% endfor %}
           {% endif %}
-
-          {# === MODIFIED CONDITION HERE === #}
-          {# Now also explicitly checks that tagItem is not "trial" #}
           {% if tagItem != "trial" and not isCondition and not isTopic %}
-            <a class="button" href="/tags/{{ tagItem | slugify }}/" data-small-button>
-              {{ tagItem }}
-            </a>
+            <a class="button" href="/tags/{{ tagItem | slugify }}/" data-small-button>{{ tagItem }}</a>
           {% endif %}
         {% endfor %}
       {% endif %}
     </div>
-
-    {# 4. Detailed Trial Metadata Section #}
-    <div class="trial-metadata flow" style="--flow-space: var(--space-s); margin-block-end: var(--space-l);">
-      <h2 class="visually-hidden">Study Details</h2>
-      <dl class="metadata">
-        {% if datePublished %}
-          <dt>Date Published:</dt>
-          <dd>{% set definedDate = datePublished %}{% include "partials/date.njk" %}</dd>
-        {% endif %}
-        {% if journal %}
-          <dt>Journal:</dt>
-          <dd>{{ journal }}</dd>
-        {% endif %}
-        {% if studyDesign %}
-          <dt>Study Design:</dt>
-          <dd>{{ studyDesign }}</dd>
-        {% endif %}
-        {% if blinding %}
-          <dt>Blinding:</dt>
-          <dd>{{ blinding }}</dd>
-        {% endif %}
-        {% if enrollmentPeriod %}
-          <dt>Enrollment Period:</dt>
-          <dd>{{ enrollmentPeriod }}</dd>
-        {% endif %}
-        {% if pico %}
-          <dt>PICO Question:</dt>
-          <dd>{{ pico | markdownFormat | safe }}</dd>
-        {% endif %}
-        {% if primaryOutcome %}
-          <dt>Primary Outcome:</dt>
-          <dd>{{ primaryOutcome | markdownFormat | safe }}</dd>
-        {% endif %}
-        {% if secondaryOutcomes and secondaryOutcomes.length > 0 %}
-          <dt>Key Secondary Outcomes:</dt>
-          <dd>
-            <ul class="flow" style="--flow-space: var(--space-3xs); padding-left: var(--space-s);">
-              {% for outcome in secondaryOutcomes %}
-                <li>{{ outcome | markdownFormat | safe }}</li>
-              {% endfor %}
-            </ul>
-          </dd>
-        {% endif %}
-        {% if keyInclusionCriteria and keyInclusionCriteria.length > 0 %}
-          <dt>Key Inclusion Criteria:</dt>
-          <dd>
-            <ul class="flow" style="--flow-space: var(--space-3xs); padding-left: var(--space-s);">
-              {% for criterion in keyInclusionCriteria %}
-                <li>{{ criterion }}</li>
-              {% endfor %}
-            </ul>
-          </dd>
-        {% endif %}
-        {% if keyExclusionCriteria and keyExclusionCriteria.length > 0 %}
-          <dt>Key Exclusion Criteria:</dt>
-          <dd>
-            <ul class="flow" style="--flow-space: var(--space-3xs); padding-left: var(--space-s);">
-              {% for criterion in keyExclusionCriteria %}
-                <li>{{ criterion }}</li>
-              {% endfor %}
-            </ul>
-          </dd>
-        {% endif %}
-        {% if interventionDetails %}
-          <dt>Intervention:</dt>
-          <dd>{{ interventionDetails | markdownFormat | safe }}</dd>
-        {% endif %}
-        {% if controlDetails %}
-          <dt>Control:</dt>
-          <dd>{{ controlDetails | markdownFormat | safe }}</dd>
-        {% endif %}
-        {% if fundingSource %}
-          <dt>Funding Source:</dt>
-          <dd>{{ fundingSource }}</dd>
-        {% endif %}
-        {% if doi %}
-          <dt>DOI:</dt>
-          <dd>
-            <a href="https://doi.org/{{ doi }}" target="_blank" rel="noopener noreferrer">{{ doi }}</a>
-          </dd>
-        {% endif %}
-        {% if pmid %}
-          <dt>PMID:</dt>
-          <dd>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pmid }}" target="_blank" rel="noopener noreferrer">{{ pmid }}</a>
-          </dd>
-        {% endif %}
-        {% if rctIdentifier %}
-          <dt>ClinicalTrials.gov ID:</dt>
-          <dd>
-            <a href="https://clinicaltrials.gov/show/{{ rctIdentifier }}" target="_blank" rel="noopener noreferrer">{{ rctIdentifier }}</a>
-          </dd>
-        {% endif %}
-      </dl>
-    </div>
   </div>
-  {# End of .wrapper for metadata and title stuff #}
+</div>
 
-  {# 5. Gist Section - Full Width, Dark Background #}
-  {% if gist %}
-    <div class="gist-section | region bg-dark text-light flow" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l); margin-block: var(--space-l) var(--space-xl);">
-      <div class="wrapper flow">
-        <h2 class="text-step-2" style="color: var(--color-light);">The Gist</h2>
-        <div class="prose-invert flow">
-          {# prose-invert might be a utility in Eleventy Excellent for dark backgrounds #}
-          {{ gist | markdownFormat | safe }}
-        </div>
+<div class="trial-key-metadata | region" style="--region-space-top: var(--space-m); --region-space-bottom: var(--space-l);">
+  <div class="wrapper">
+    <div class="two-column-grid">
+      <div class="metadata-col1 flow" style="--flow-space: var(--space-s);">
+        <h2 class="visually-hidden">Key Publication Details</h2>
+        <dl class="metadata key-details-list">
+          {% if datePublished %}
+            <dt>Date Published:</dt>
+            <dd>{% set definedDate = datePublished %}{% include "partials/date.njk" %}</dd>
+          {% endif %}
+          {% if journal %}
+            <dt>Journal:</dt>
+            <dd>{{ journal }}</dd>
+          {% endif %}
+          {% if doi %}
+            <dt>DOI:</dt>
+            <dd>
+              <a href="https://doi.org/{{ doi }}" target="_blank" rel="noopener noreferrer">{{ doi }}</a>
+            </dd>
+          {% endif %}
+          {% if pmid %}
+            <dt>PMID:</dt>
+            <dd>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/{{ pmid }}" target="_blank" rel="noopener noreferrer">{{ pmid }}</a>
+            </dd>
+          {% endif %}
+          {% if rctIdentifier %}
+            <dt>ClinicalTrials.gov ID:</dt>
+            <dd>
+              <a href="https://clinicaltrials.gov/show/{{ rctIdentifier }}" target="_blank" rel="noopener noreferrer">{{ rctIdentifier }}</a>
+            </dd>
+          {% endif %}
+        </dl>
+      </div>
+      <div class="metadata-col2 pico-display flow">
+        <h2 class="visually-hidden">PICO Question</h2>
+        {% if pico %}
+          <div class="text-step-0">{{ pico | markdownFormat | safe }}</div>
+          {# text-step-0 or text-step-1 for larger PICO text #}
+        {% else %}
+          <p>
+            <em>PICO question not specified.</em>
+          </p>
+        {% endif %}
       </div>
     </div>
+  </div>
+</div>
+
+{# 5. Gist Section - Full Width, Dark Background #}
+{% if gist %}
+  <div class="gist-section | region bg-dark text-light flow" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l); margin-block: var(--space-l) var(--space-xl);">
+    <div class="wrapper flow">
+      <h2 class="text-step-2" style="color: var(--color-light);">The Gist</h2>
+      <div class="prose-invert flow">
+        {# prose-invert might be a utility in Eleventy Excellent for dark backgrounds #}
+        {{ gist | markdownFormat | safe }}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{# This wrapper should contain the main body content and the related commentary #}
+<div class="wrapper flow prose">
+  {{ content | safe }}
+  {# Main markdown content from the .md file #}
+
+  {# Related Commentary Section - Placed within the main content wrapper #}
+  {% if relatedCommentary and relatedCommentary.length > 0 %}
+    <section class="commentary-section flow" style="margin-top: var(--space-xl);">
+      <h2>Related Commentary & Discussion</h2>
+      <ul class="commentary-list flow" style="--flow-space: var(--space-l); padding-left: 0; list-style: none;">
+        {% for comment in relatedCommentary %}
+          <li class="comment-item flow" style="--flow-space: var(--space-2xs); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-s); margin-bottom: var(--space-s);">
+            <h3 class="comment-title text-step-0" style="margin-bottom: var(--space-3xs);">
+              <a href="{{ comment.url }}" target="_blank" rel="noopener noreferrer">{{ comment.title }}</a>
+            </h3>
+            <p class="comment-meta text-step-min-1" style="color: var(--color-text-subtle);">
+              <strong>Type:</strong>
+              {{ comment.type }}<br>
+              {% if comment.authors %}
+                <strong>Authors:</strong>
+                {{ comment.authors }}<br>
+              {% endif %}
+              {% if comment.source %}
+                <strong>Source:</strong>
+                {{ comment.source }}
+              {% endif %}
+              {% if comment.date %}
+                  ({{ comment.date | formatDate }}) {# Assumes formatDate filter exists #}{% endif %}
+            </p>
+            {# MODIFIED LINE: Using Nunjucks 'is string' test #}
+            {% if comment.notes is string and comment.notes %}
+              <p class="comment-notes text-step-min-1">{{ comment.notes | markdownFormat | safe }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
   {% endif %}
 
-  {# This wrapper should contain the main body content and the related commentary #}
-  <div class="wrapper flow prose">
-    {{ content | safe }}
-    {# Main markdown content from the .md file #}
+  {% include 'partials/edit-on.njk' %}
+</div>
+{# End of .wrapper for main content and commentary #}
 
-    {# Related Commentary Section - Placed within the main content wrapper #}
-    {% if relatedCommentary and relatedCommentary.length > 0 %}
-      <section class="commentary-section flow" style="margin-top: var(--space-xl);">
-        <h2>Related Commentary & Discussion</h2>
-        <ul class="commentary-list flow" style="--flow-space: var(--space-l); padding-left: 0; list-style: none;">
-          {% for comment in relatedCommentary %}
-            <li class="comment-item flow" style="--flow-space: var(--space-2xs); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-s); margin-bottom: var(--space-s);">
-              <h3 class="comment-title text-step-0" style="margin-bottom: var(--space-3xs);">
-                <a href="{{ comment.url }}" target="_blank" rel="noopener noreferrer">{{ comment.title }}</a>
-              </h3>
-              <p class="comment-meta text-step-min-1" style="color: var(--color-text-subtle);">
-                <strong>Type:</strong>
-                {{ comment.type }}<br>
-                {% if comment.authors %}
-                  <strong>Authors:</strong>
-                  {{ comment.authors }}<br>
-                {% endif %}
-                {% if comment.source %}
-                  <strong>Source:</strong>
-                  {{ comment.source }}
-                {% endif %}
-                {% if comment.date %}
-                  ({{ comment.date | formatDate }}) {# Assumes formatDate filter exists #}{% endif %}
-              </p>
-              {# MODIFIED LINE: Using Nunjucks 'is string' test #}
-              {% if comment.notes is string and comment.notes %}
-                <p class="comment-notes text-step-min-1">{{ comment.notes | markdownFormat | safe }}</p>
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endif %}
-
-    {% include 'partials/edit-on.njk' %}
-  </div>
-  {# End of .wrapper for main content and commentary #}
-
-  {# Existing hidden h-entry block (keep as is for now) #}
-  <div hidden class="h-entry">
-    <a class="u-url" href="{{ page.url | url | absoluteUrl(meta.url) }}">{{ title }}</a>
-    {# This title should be the main page title (acronym or full) #}
-    <a class="p-name u-url" rel="author" href="{{ meta.url }}">{{ meta.author.name }}</a>
-    <img
+{# Existing hidden h-entry block (keep as is for now) #}
+<div hidden class="h-entry">
+  <a class="u-url" href="{{ page.url | url | absoluteUrl(meta.url) }}">{{ title }}</a>
+  {# This title should be the main page title (acronym or full) #}
+  <a class="p-name u-url" rel="author" href="{{ meta.url }}">{{ meta.author.name }}</a>
+  <img
       eleventy:ignore
       class="u-author h-card"
       src="{{ meta.author.avatar | url | absoluteUrl(meta.url) }}"
       alt="{{ meta.author.name }}"
 />
-  </div>
+</div>
 </div>
 {# End of outer .region #}
 
@@ -233,4 +180,50 @@ schema: BlogPosting
 {%- css "local" -%}
 {%- include 'css/post.css' -%}
 {%- include 'css/footnotes.css' -%}
+
+  .full-title {
+    font-style: italic;
+    color: var(--color-text-subtle); /* Example color */
+  }
+  .trial-hero-section .custom-tags-section a.button {
+    /* Styles for tags in hero if they need to be different from other button tags */
+  }
+  .two-column-grid {
+    display: grid;
+    gap: var(--space-l, 2rem); /* Adjust gap as needed */
+  }
+  @media (min-width: 768px) { /* Apply two columns on medium screens and up */
+    .two-column-grid {
+      grid-template-columns: 1fr 1fr; /* Column 1 is 1/3, Column 2 is 2/3 */
+    }
+  }
+  .metadata-col1 .metadata dt {
+    font-weight: bold;
+    margin-top: var(--space-xs);
+  }
+  .metadata-col1 .metadata dd {
+    margin-left: 0;
+    margin-bottom: var(--space-xs);
+  }
+  .pico-display {
+    /* font-size: var(--text-step-1); /* Example: make PICO text larger - using class instead */ */
+    /* Add any other specific styling for PICO display */
+  }
+  .gist-section.bg-dark {
+    background-color: var(--color-dark-glare, #222c30);
+    color: var(--color-light, #f8f8f8);
+  }
+  .gist-section h2 {
+    color: var(--color-light, #f8f8f8);
+  }
+  .prose-invert p, .prose-invert li, .prose-invert div {
+    color: var(--color-text-on-dark, var(--color-light));
+  }
+  .prose-invert a {
+    color: var(--color-accent-on-dark, var(--color-accent));
+  }
+  .commentary-list .comment-item:last-child {
+    border-bottom: none;
+  }
+
 {%- endcss -%}
