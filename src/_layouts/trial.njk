@@ -19,7 +19,7 @@ schema: BlogPosting
     <div class="custom-tags-section cluster gutter-xs-s" style="margin-block-end: var(--space-m);">
       {% if conditions and conditions.length > 0 %}
         {% for conditionItem in conditions %}
-          <a href="/trials/conditions/{{ conditionItem | slugify }}/" class="button category-tag" data-small-button>
+          <a href="/conditions/{{ conditionItem | slugify }}/" class="button category-tag" data-small-button>
             {{ conditionItem }}
           </a>
         {% endfor %}
@@ -27,7 +27,7 @@ schema: BlogPosting
 
       {% if topics and topics.length > 0 %}
         {% for topicItem in topics %}
-          <a href="/trials/topics/{{ topicItem | slugify }}/" class="button topic-tag" data-small-button>
+          <a href="/topics/{{ topicItem | slugify }}/" class="button topic-tag" data-small-button>
             {{ topicItem }}
           </a>
         {% endfor %}
