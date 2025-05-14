@@ -1,3 +1,5 @@
+// src/_data/meta.js
+
 export const url = process.env.URL || 'http://localhost:8080';
 // Extract domain from `url`
 export const domain = new URL(url).hostname;
@@ -26,7 +28,7 @@ export const opengraph_default_alt =
   "Visible content: An Eleventy starter with CUBE CSS, Cube CSS, Every Layout, Design Tokens and Tailwind for uitility classes. A workflow for building modern and resilient websites, introduced by Andy Bell's project buildexcellentwebsit.es"; // alt text for default meta image"
 export const blog = {
   // RSS feed
-  name: 'CritLit Blog',
+  name: 'CritLit Blog', // This might be better as 'CritLit Content' or similar if not just a blog
   description: 'Tell the word what you are writing about in your blog. It will show up on feed readers.',
   // feed links are looped over in the head. You may add more to the array.
   feedLinks: [
@@ -46,11 +48,12 @@ export const blog = {
   tagPlural: 'Tags',
   tagMore: 'More tags:',
   // pagination
-  paginationLabel: 'Blog',
+  paginationLabel: 'Blog', // Consider changing if not just for blog
   paginationPage: 'Page',
   paginationPrevious: 'Previous',
   paginationNext: 'Next',
   paginationNumbers: true
+  // Removed 'githubEdit' from here as it's more general
 };
 export const details = {
   aria: 'section controls',
@@ -83,9 +86,14 @@ export const greenweb = {
   ],
   services: [{domain: 'netlify.com', serviceType: 'cdn'}]
 };
+
+// Updated viewRepo object
 export const viewRepo = {
   // this is for the view/edit on github link. The value in the package.json will be pulled in.
   allow: true,
-  infoText: 'View this page on GitHub'
+  // New property for the introductory text
+  promptText: 'Found an error or want to suggest an improvement?',
+  // Updated infoText to be the link text
+  infoText: 'Edit this page on GitHub' // Changed from "View this page on GitHub"
 };
 export const easteregg = true;

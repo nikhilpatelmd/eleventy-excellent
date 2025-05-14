@@ -1,9 +1,21 @@
+{# This partial displays a link to edit the current page on GitHub. #}
+{# It relies on 'meta.viewRepo.allow' being true in your src/_data/meta.js #}
+{# (as per the 'meta_js_updated_for_edit_link' document) #}
+{# and 'pkg.repository.url' being set in your package.json or global data 'pkg'. #}
+
 {% if meta.viewRepo.allow %}
-  <hr />
+  <hr/>
   <p class="text-step-min-1">
-    {{ meta[page.lang].blog.githubEdit }}
-    <a href="{{ pkg.repository.url | url | replace('.git', '/tree/main/') }}{{ page.inputPath }}"
-      >{{ meta.viewRepo.infoText }}</a
+    {# Display the prompt text from meta.js if it exists #}
+    {% if meta.viewRepo.promptText %}{{ meta.viewRepo.promptText }}
+    {% endif %}
+
+    {# Create the link to edit the page on GitHub #}
+    <a href="{{ pkg.repository.url | url | replace('.git', '/edit/main/') }}{{ page.inputPath }}" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      {# Display the link text from meta.js, with a fallback #}
+      {{ meta.viewRepo.infoText | default("Edit this page on GitHub") }}</a
     >.
   </p>
 {% endif %}

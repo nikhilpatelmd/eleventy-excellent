@@ -11,11 +11,6 @@
     {% endfor %}
   </div>
 
-  <div slot="date">
-    {%- if item.data.draft -%}
-      <span class="button" data-small-button data-button-variant='tertiary'>draft</span>{%- endif %}
-    {% include "partials/date.njk" %}</div>
-
   <div slot="content" webc:nokeep>{{ item.data.pico | markdownFormat | safe }}</div>
 </custom-card>
 

@@ -3,37 +3,53 @@ layout: tags
 pagination:
   data: collections.uniqueTopics
   size: 1
-  alias: topic
-permalink: /topics/{{ topic | slugify }}/
+  alias: currentTopicName
+permalink: '/topics/{{ currentTopicName | slugify }}/index.html'
 eleventyComputed:
-  title: '{{ topic }}'
+  title: '{{ currentTopicName }}'
 ---
 
-<custom-masonry layout="50-50">
-  {% set itemList = collections[topic] | reverse %}
-  {% for item in itemList %}
+{# Filter allTrials to get only those that include the currentTopicName #}
+{% set trialsForThisTopic = [] %}
+{% for trial in collections.allTrials %}
+  {# Loop through all your trials #}
+  {% if trial.data.topics and currentTopicName in trial.data.topics %}
+    {# If the trial's 'topics' array contains the currentTopicName, add it to our list #}
+    {% set trialsForThisTopic = (trialsForThisTopic.push(trial), trialsForThisTopic) %}
+  {% endif %}
+{% endfor %}
 
-    {% include "partials/card-tag.njk" %}
-  {% endfor %}
+{# Display trials for the CURRENT topic using custom-masonry #}
+<custom-masonry layout="50-50" class="region" style="--region-space-bottom: var(--space-xl-2xl);">
+  {# Now loop through the filtered list 'trialsForThisTopic' #}
+  {% if trialsForThisTopic.length > 0 %}
+    {% for item in trialsForThisTopic %}
+      {# Use the card partial designed for trials #}
+      {% include "partials/card-trial.njk" %}
+    {% endfor %}
+  {% else %}
+    <p class="prose text-center" style="grid-column: 1 / -1;">
+        No trials found for the topic "{{ currentTopicName }}".
+      </p>
+  {% endif %}
 </custom-masonry>
 
-<h2 class="text-step-2">{{ meta.blog.tagMore }}</h2>
-
-<ul class="taglist | my-s-m cluster gutter-s" role="list">
-  {% for tag in collections.uniqueTopics %}
-    <li>
-      <a
-        href="/topics/{{ topic | slug}}"
-        class="button"
-        {{
-          helpers.getLinkActiveState('/conditions/' + condition,
-          page.url)
-          |
-          safe
-        }}
-      >
-        {{ tag }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+{# Section to display links to ALL other topics for navigation #}
+<div class="all-terms-list | region flow prose" style="--region-space-bottom: var(--space-l);">
+  <h2 class="text-step-2">More topics:</h2>
+  <ul class="taglist | my-s-m cluster gutter-s" role="list">
+    {# Loop through all unique topic names #}
+    {% for topicNameLoop in collections.uniqueTopics %}
+      <li>
+        <a
+            href="/topics/{{ topicNameLoop | slugify }}/" {# Corrected link for each topic in the loop #}
+            class="button {% if topicNameLoop == currentTopicName %}is-active{% endif %}" {# Highlight current topic #}
+            data-small-button
+            {% if topicNameLoop == currentTopicName %}aria-current="page"{% endif %}>
+          {{ topicNameLoop }}
+          {# Display the name of the topic from the loop #}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
