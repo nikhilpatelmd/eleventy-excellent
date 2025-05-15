@@ -25,7 +25,7 @@
   /* Corresponds to 'regular' */
   src:
     local(''),
-    url('/assets/fonts/newsreader/newsreader-variablefont_opszwght-webfont.woff2') format('woff2-variations');
+    url('/assets/fonts/newsreader/newsreader_vf.ttf') format('truetype-variations');
 }
 
 /* Newsreader (Italic) */
@@ -37,5 +37,5 @@
   /* Corresponds to 'italic' or 'regular italic' */
   src:
     local(''),
-    url('/assets/fonts/newsreader/newsreader-italic-variablefont_opszwght-webfont.woff2') format('woff2-variations');
+    url('/assets/fonts/newsreader/newsreader_i_vf.ttf') format('truetype-variations');
 }
