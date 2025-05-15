@@ -16,101 +16,26 @@
 
 /* === NEWSREADER FONT FACES === */
 
-/* Newsreader Regular 400 (Normal) */
+/* Newsreader(Normal) */
 @font-face {
   font-family: 'Newsreader';
   font-style: normal;
   font-display: swap;
-  font-weight: 400;
+  font-weight: 200 800;
   /* Corresponds to 'regular' */
-  src: url('../../../fonts/newsreader/newsreader-v25-latin_latin-ext-regular.woff2') format('woff2');
+  src:
+    local(''),
+    url('/assets/fonts/newsreader/newsreader-variablefont_opszwght-webfont.woff2') format('woff2-variations');
 }
 
-/* Newsreader Italic 400 (Regular Italic) */
+/* Newsreader (Italic) */
 @font-face {
   font-family: 'Newsreader';
   font-style: italic;
   font-display: swap;
-  font-weight: 400;
+  font-weight: 200 800;
   /* Corresponds to 'italic' or 'regular italic' */
-  src: url('../../../fonts/newsreader/newsreader-v25-latin_latin-ext-italic.woff2') format('woff2');
-}
-
-/* Newsreader Light 300 (Normal) */
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 300;
-  src: url('../../../fonts/newsreader/newsreader-v25-latin_latin-ext-300.woff2') format('woff2');
-}
-
-/* Newsreader Light 300 Italic */
-@font-face {
-  font-family: 'Newsreader';
-  font-style: italic;
-  font-display: swap;
-  font-weight: 300;
-  src: url('../../../fonts/newsreader/newsreader-v25-latin_latin-ext-300italic.woff2') format('woff2');
-}
-
-/* Newsreader SemiBold 600 (Normal) */
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 600;
-  src: url('../../../fonts/newsreader/newsreader-v25-latin_latin-ext-600.woff2') format('woff2');
-}
-
-/* Newsreader Bold 700 (Normal) */
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src: url('../../../fonts/newsreader/newsreader-v25-latin_latin-ext-700.woff2') format('woff2');
-}
-
-/* === OLD FONT FACES (Commented out as Newsreader is being added) === */
-/*
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
   src:
     local(''),
-    url('/assets/fonts/atkinson/atkinson-hyperlegible-regular.woff2') format('woff2');
+    url('/assets/fonts/newsreader/newsreader-italic-variablefont_opszwght-webfont.woff2') format('woff2-variations');
 }
-
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: italic;
-  font-display: swap;
-  font-weight: 400;
-  src:
-    local(''),
-    url('/assets/fonts/atkinson/atkinson-hyperlegible-italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 700;
-  src:
-    local(''),
-    url('/assets/fonts/atkinson/atkinson-hyperlegible-bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Redhat'; // Note: Eleventy Excellent starter uses 'Red Hat Display'
-  font-style: normal;
-  font-display: swap;
-  font-weight: 900;
-  src:
-    local(''),
-    url('/assets/fonts/redhat/red-hat-display-v7-latin-900.woff2') format('woff2');
-}
-*/
