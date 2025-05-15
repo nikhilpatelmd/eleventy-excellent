@@ -12,7 +12,7 @@
   --button-padding: var(--space-xs) var(--space-m);
   --button-font-family: var(--font-body);
   --button-font-weight: var(--font-regular);
-  --button-font-size: var(--size-step-0);
+  --button-font-size: var(--size-step-min-1);
   --button-text-transform: none;
   --button-tracking: normal;
 
@@ -74,8 +74,8 @@
 
 .button[data-button-variant='tertiary'] {
   --button-bg: var(--color-tertiary);
-  --button-color: var(--color-dark);
-  --button-color: color-mix(in oklab, var(--color-tertiary) 10%, var(--color-dark));
+  --button-color: var(--color-light);
+  --button-color: color-mix(in oklab, var(--color-tertiary) 10%, var(--color-light));
 }
 
 .button[data-ghost-button] {
@@ -97,7 +97,7 @@
   --button-radius: var(--border-radius-small);
   --button-font-size: var(--size-step-min-2);
   --button-padding: var(--space-2xs) var(--space-s) var(--space-3xs) var(--space-s);
-  --button-text-transform: uppercase;
+  --button-text-transform: capitalize;
   --button-tracking: var(--tracking-wide);
 }
 

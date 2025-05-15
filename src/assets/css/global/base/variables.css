@@ -30,7 +30,7 @@
 :root,
 :root[data-theme='light'] {
   --color-text: var(--color-gray-800);
-  --color-bg: var(--color-gray-100);
+  --color-bg: var(--color-gray-200);
 
   --color-primary: var(--color-plum);
   --color-secondary: var(--color-teal);
