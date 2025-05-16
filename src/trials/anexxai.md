@@ -20,7 +20,7 @@ topics:
   ]
 
 # General tags:
-# tags: ["stroke", "bleeding", "pharmacotherapy", "DOAC reversal"]
+tags: ["stroke", "bleeding", "pharmacotherapy", "DOAC reversal"]
 # layout: trial # Assumed from src/trials/trials.11tydata.json
 
 # Trial details
