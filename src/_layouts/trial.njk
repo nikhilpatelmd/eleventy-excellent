@@ -105,20 +105,14 @@ schema: BlogPosting
         <!-- PICO Question -->
         <div>
           <h2 class="visually-hidden">PICO Question</h2>
-          {% if pico %}
-            <div class="text-step-2">
-              {{ pico | markdownFormat | safe }}</div>
-          {% else %}
-            <p class="text-step-2">
-              <em>PICO question not specified.</em>
-            </p>
-          {% endif %}
+          <div class="prose text-step-2">
+            {{ pico | markdownFormat | safe }}</div>
         </div>
 
         {% if gist %}
           <div class="flow">
             <h2 class="visually-hidden">The Gist</h2>
-            <div>
+            <div class = "prose">
               {{ gist | markdownFormat | safe }}
             </div>
           </div>
