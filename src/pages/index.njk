@@ -2,43 +2,75 @@
 layout: base
 permalink: /index.html
 title: 'CritLit'
-description: 'Eleventy starter using modern CSS, fluid type, fluid spacing, flexible layout and progressive enhancement.'
+description: 'Your concise guide to influential critical care literature and evidence-based practice'
+customHeader: true
 blog:
   title: 'Latest Trial Summaries'
 ---
 
-<div class="wrapper">
-  <header class="full | section" style="--spot-color: var(--color-primary)">
-    <div class="section__inner flow region">
-      <h1 class="text-center" style="color: var(--color-light);">{{ title }}</h1>
-    </div>
-  </header>
+<!-- Hero section with custom header -->
+<div class="full | section" style="--spot-color: var(--bg-accent); margin-top: calc(var(--space-xl-2xl) * -1);">
+  <div class="section__inner">
+    <!-- Site navigation header -->
+    <header class="site-header" style="padding-top: var(--space-xl-2xl);">
+      {% include "partials/header.njk" %}
+    </header>
 
-  <article class="full | region">
-    <div class="wrapper flow prose">
-      <h2 id="an-eleventy-starter">{{ meta.siteDescription }}
-      </h2>
-      <p>
-        <b>CritLit</b> is a dynamic repository offering concise summaries and analyses of influential critical care literature. It serves as an essential reference for clinicians, students, and educators to navigate and understand key trials and topics.
-      </p>
-    </div>
-  </article>
+    <!-- Hero content with sidebar layout -->
+    <div class="wrapper region" style="--region-space-top: var(--space-xl); --region-space-bottom: var(--space-xl-2xl);">
+      <div class="sidebar" style="--sidebar-target-width: 30rem; --sidebar-content-min-width: 40%;">
 
-  <section class="full | region">
-    <div class="wrapper flow prose">
-      <h2>{{ blog.title }}</h2>
-      {% if blog.intro %}
-        <p>{{ blog.intro }}</p>
-      {% endif %}
-      <div class="feature |  region region-space-l">
-        <custom-masonry layout="50-50">
-          {% set itemList = collections.allTrials %}
-          {% asyncEach item in itemList.slice(0, 4) %}
-          {% set headingLevel = "h3" %}
-          {% include "partials/card-trial.njk" %}
-          {% endeach %}
-        </custom-masonry>
+        <!-- Left column: Site description and intro -->
+        <div class="flow prose">
+          <h1 class="text-step-4">{{ meta.siteDescription }}</h1>
+          <p class="text-step-1">
+            A dynamic repository of concise summaries and analyses of influential critical care literature, providing essential reference for evidence-based practice. Perfect for clinicians, students, and educators seeking to quickly understand key trials and their clinical implications.
+          </p>
+        </div>
+
+        <!-- Right column: Latest trial summaries -->
+        <div class="flow">
+          <h2 class="text-step-2">{{ blog.title }}</h2>
+          <custom-masonry layout="50-50">
+            {% set itemList = collections.allTrials %}
+            {% asyncEach item in itemList.slice(0, 4) %}
+            {% set headingLevel = "h3" %}
+            {% include "partials/card-trial.njk" %}
+            {% endeach %}
+          </custom-masonry>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
+
+<!-- Additional sections can be added below if needed -->
+<div class="wrapper region">
+  <div class="flow prose">
+    <h2>Explore by Condition</h2>
+    <ul class="taglist | my-s-m cluster gutter-s" role="list">
+      {% for conditionName in collections.uniqueConditions %}
+        <li>
+          <a href="/conditions/{{ conditionName | slugify }}/" class="button" data-small-button>
+            {{ conditionName }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="wrapper region">
+  <div class="flow prose">
+    <h2>Explore by Topic</h2>
+    <ul class="taglist | my-s-m cluster gutter-s" role="list">
+      {% for topicName in collections.uniqueTopics %}
+        <li>
+          <a href="/topics/{{ topicName | slugify }}/" class="button" data-small-button>
+            {{ topicName }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>

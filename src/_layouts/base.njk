@@ -47,7 +47,7 @@
       {% endif %}
     {% endset %}
 
-    {% if layout != "trial" %}
+    {% if not customHeader %}
       {% include "partials/header.njk" %}
     {% endif %}
 
