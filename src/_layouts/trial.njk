@@ -107,11 +107,10 @@ schema: BlogPosting
 
 {# 5. Gist Section - Full Width, Dark Background #}
 {% if gist %}
-  <div class="gist-section | region bg-dark text-light flow" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l); margin-block: var(--space-l) var(--space-xl);">
+  <div class="full gist-section | region bg-dark text-light" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l);">
     <div class="wrapper flow">
       <h2 class="text-step-2" style="color: var(--color-light);">The Gist</h2>
       <div class="prose-invert flow">
-        {# prose-invert might be a utility in Eleventy Excellent for dark backgrounds #}
         {{ gist | markdownFormat | safe }}
       </div>
     </div>
@@ -209,13 +208,7 @@ schema: BlogPosting
     /* font-size: var(--text-step-1); /* Example: make PICO text larger - using class instead */ */
     /* Add any other specific styling for PICO display */
   }
-  .gist-section.bg-dark {
-    background-color: var(--color-dark-glare, #222c30);
-    color: var(--color-light, #f8f8f8);
-  }
-  .gist-section h2 {
-    color: var(--color-light, #f8f8f8);
-  }
+
   .prose-invert p, .prose-invert li, .prose-invert div {
     color: var(--color-text-on-dark, var(--color-light));
   }

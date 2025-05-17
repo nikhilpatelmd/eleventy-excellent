@@ -1,0 +1,8 @@
+.gist-section.bg-dark {
+  background-color: var(--color-dark-glare, #222c30);
+  color: var(--color-light, #f8f8f8);
+}
+
+.gist-section h2 {
+  color: var(--color-light, #f8f8f8);
+}
