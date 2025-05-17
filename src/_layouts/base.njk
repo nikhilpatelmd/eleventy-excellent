@@ -41,16 +41,16 @@
   </head>
 
   <body class="{{ layout }}">
-    <!-- Fixed header for all layouts -->
-    {% if layout != "trial" %}
-      {% include "partials/header.njk" %}
-    {% endif %}
+    {% set indicateActiveHome %}
+    {% if page.url == "/" %}
+        aria-current=page
+      {% endif %}
+    {% endset %}
+    {% include "partials/header.njk" %}
 
-    <!-- Main content -->
     <main id="main" class="flow">{{ content | safe }}</main>
 
-    <!-- Footer -->
-    <div id="site-footer">{% include "partials/footer.njk" %}</div>
-  </body>
+    {% include "partials/footer.njk" %}
 
+</body>
 </html>
