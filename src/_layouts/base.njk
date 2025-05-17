@@ -46,11 +46,14 @@
         aria-current=page
       {% endif %}
     {% endset %}
-    {% include "partials/header.njk" %}
+
+    {% if layout != "trial" %}
+      {% include "partials/header.njk" %}
+    {% endif %}
 
     <main id="main" class="flow">{{ content | safe }}</main>
 
     {% include "partials/footer.njk" %}
 
-</body>
+  </body>
 </html>
