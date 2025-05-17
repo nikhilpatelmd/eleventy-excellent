@@ -107,10 +107,10 @@ schema: BlogPosting
 
 {# 5. Gist Section - Full Width, Dark Background #}
 {% if gist %}
-  <div class="full gist-section | region bg-dark text-light" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l);">
-    <div class="wrapper flow">
-      <h2 class="text-step-2" style="color: var(--color-light);">The Gist</h2>
-      <div class="prose-invert flow">
+  <div class="full | region bg-dark text-light" style="--region-space-top: var(--space-l); --region-space-bottom: var(--space-l);">
+    <div class="wrapper region flow">
+      <h2 class="text-step-2">The Gist</h2>
+      <div>
         {{ gist | markdownFormat | safe }}
       </div>
     </div>
