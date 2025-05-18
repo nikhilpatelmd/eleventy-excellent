@@ -8,7 +8,7 @@ blog:
 ---
 
 <!-- Hero section with custom header -->
-<div class="full | section" style="--spot-color: var(--bg-accent); margin-top: calc(var(--space-xl-2xl) * -1);">
+<div class="full | section hero-background" style="margin-top: calc(var(--space-xl-2xl) * -1);">
   <div class="section__inner">
     <!-- Site navigation header -->
     <header class="site-header" style="padding-top: var(--space-xl-2xl);">
@@ -78,3 +78,22 @@ blog:
     </ul>
   </div>
 </div>
+
+<style>
+  :root {
+    /* Define RGB values for background color - adjust these to match your theme */
+    --color-bg-rgb: 240, 240, 240;
+    /* Light mode background */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg-rgb: 51, 51, 51;
+      /* Dark mode background */
+    }
+  }
+</style>
+
+{%- css "local" -%}
+{%- include 'css/hero.css' -%}
+{%- endcss -%}
