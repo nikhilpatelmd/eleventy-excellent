@@ -7,8 +7,8 @@ blog:
   title: 'Latest Trial Summaries'
 ---
 
-<!-- Hero section with custom header -->
-<div class="full | section hero-background" style="margin-top: calc(var(--space-xl-2xl) * -1);">
+<!-- Hero section with custom header - simplified structure -->
+<div class="full | section" style="margin-top: calc(var(--space-xl-2xl) * -1);">
   <div class="section__inner">
     <!-- Site navigation header -->
     <header class="site-header" style="padding-top: var(--space-xl-2xl);">
@@ -17,19 +17,18 @@ blog:
 
     <!-- Hero content with sidebar layout -->
     <div class="wrapper region" style="--region-space-top: var(--space-xl); --region-space-bottom: var(--space-xl);">
-      <div class="sidebar" style="--sidebar-target-width: 30rem; --sidebar-content-min-width: 40%;">
+      <div class="sidebar" style="--sidebar-target-width: 29rem; --sidebar-content-min-width: 40%;">
 
         <!-- Left column: Site description and intro -->
         <div class="flow prose">
           <h1 class="text-step-4">{{ meta.siteDescription }}</h1>
           <p class="text-step-1">
-                CritLit provides summaries of influential critical care studies for clinicians, researchers, and students. Each trial is broken down into easy-to-understand components with key takeaways highlighted. Browse our latest summaries or explore by condition or topic below.
+                CritLit provides summaries of influential critical care studies for clinicians, researchers, and students. Each trial is broken down into easy-to-understand components with key takeaways highlighted. Browse the latest summaries here or explore by condition or topic below.
           </p>
         </div>
 
         <!-- Right column: Latest trial summaries -->
         <div class="flow">
-          {# <h2 class="text-step-min-1 text-center">{{ blog.title }}</h2> #}
           <div class="grid" style="--grid-min-item-size: 20rem; --gutter: var(--space-xs);">
             {% set itemList = collections.allTrials %}
             {% for item in itemList.slice(0, 4) %}
@@ -48,52 +47,42 @@ blog:
   </div>
 </div>
 
-<!-- Additional sections can be added below if needed -->
-<div class="wrapper region">
-  <div class="flow prose">
-    <h2>Explore by Condition</h2>
-    <ul class="taglist | my-s-m cluster gutter-s" role="list">
-      {% for conditionName in collections.uniqueConditions %}
-        <li>
-          <a href="/conditions/{{ conditionName | slugify }}/" class="button" data-small-button>
-            {{ conditionName }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+<!-- Explore by Condition Section -->
+<div class="full | section" style="--spot-color: var(--color-bg);">
+  <div class="section__inner">
+    <div class="wrapper region">
+      <div class="flow prose">
+        <h2>Explore by Condition</h2>
+        <ul class="taglist | my-s-m cluster gutter-s" role="list">
+          {% for conditionName in collections.uniqueConditions %}
+            <li>
+              <a href="/conditions/{{ conditionName | slugify }}/" class="button" data-small-button>
+                {{ conditionName }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="wrapper region">
-  <div class="flow prose">
-    <h2>Explore by Topic</h2>
-    <ul class="taglist | my-s-m cluster gutter-s" role="list">
-      {% for topicName in collections.uniqueTopics %}
-        <li>
-          <a href="/topics/{{ topicName | slugify }}/" class="button" data-small-button>
-            {{ topicName }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+<!-- Explore by Topic Section -->
+<div class="full | section" style="--spot-color: var(--color-bg);">
+  <div class="section__inner">
+    <div class="wrapper region">
+      <div class="flow prose">
+        <h2>Explore by Topic</h2>
+        <ul class="taglist | my-s-m cluster gutter-s" role="list">
+          {% for topicName in collections.uniqueTopics %}
+            <li>
+              <a href="/topics/{{ topicName | slugify }}/" class="button" data-small-button>
+                {{ topicName }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
-  :root {
-    /* Define RGB values for background color - adjust these to match your theme */
-    --color-bg-rgb: 240, 240, 240;
-    /* Light mode background */
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-bg-rgb: 51, 51, 51;
-      /* Dark mode background */
-    }
-  }
-</style>
-
-{%- css "local" -%}
-{%- include 'css/hero.css' -%}
-{%- endcss -%}
