@@ -68,14 +68,14 @@ customHeader: true
         <div class="cluster" style="--cluster-horizontal-alignment: flex-start; --gutter: var(--space-xs);">
           {% if conditions and conditions.length > 0 %}
             {% for conditionItem in conditions %}
-              <a href="/conditions/{{ conditionItem | slugify }}/" class="button" data-small-button>
+              <a href="/conditions/{{ conditionItem | slugify }}/" class="button" data-button-variant="primary" data-small-button>
                 {{ conditionItem }}
               </a>
             {% endfor %}
           {% endif %}
           {% if topics and topics.length > 0 %}
             {% for topicItem in topics %}
-              <a href="/topics/{{ topicItem | slugify }}/" class="button" data-small-button>
+              <a href="/topics/{{ topicItem | slugify }}/" class="button" data-button-variant="secondary" data-small-button>
                 {{ topicItem }}
               </a>
             {% endfor %}
@@ -97,7 +97,7 @@ customHeader: true
                 {% endfor %}
               {% endif %}
               {% if tagItem != "trial" and not isCondition and not isTopic %}
-                <a class="button" href="/tags/{{ tagItem | slugify }}/" data-small-button>{{ tagItem }}</a>
+                <a class="button" href="/tags/{{ tagItem | slugify }}/" data-button-variant="tertiary" data-small-button>{{ tagItem }}</a>
               {% endif %}
             {% endfor %}
           {% endif %}

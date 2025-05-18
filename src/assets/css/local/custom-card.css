@@ -1,17 +1,19 @@
 custom-card {
   --gutter: var(--space-xs-s);
+  --flow-space: var(--space-l);
+  /* Default vertical spacing between elements */
   background-color: var(--card-bg, var(--color-bg-accent));
   border: 4px solid var(--color-bg-accent);
   color: var(--color-text);
   padding: var(--space-s-m);
   border-radius: var(--border-radius-medium);
   max-inline-size: unset;
-  display: grid;
-  grid-template-rows: [image] max-content [headline] max-content [meta] max-content [desc] auto [footer] max-content;
+  display: block;
+  /* Simple block layout */
 }
 
 /* avoid flow space being added to unused elements with nested slots */
-custom-card > :empty {
+custom-card> :empty {
   display: none;
 }
 
@@ -21,16 +23,15 @@ custom-card ::selection {
 }
 
 custom-card :is(h2, h3) {
-  --flow-space: var(--space-m);
-  grid-row: headline;
+  margin-bottom: var(--space-3xs);
+  /* Tighter spacing after headings */
 }
 
 custom-card :is(h2, h3) a {
   text-decoration: none;
 }
 
-custom-card > :is(picture, figure) {
-  grid-row: image;
+custom-card> :is(picture, figure) {
   --flow-space: 0;
 }
 
@@ -40,20 +41,6 @@ custom-card img {
   aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
-}
-
-custom-card > .meta {
-  grid-row: meta;
-  font-size: var(--size-step-min-1);
-}
-
-custom-card > p {
-  grid-row: desc;
-}
-
-custom-card > footer {
-  grid-row: footer;
-  font-size: var(--size-step-min-2);
 }
 
 /* avoid overflow of long words */
@@ -66,7 +53,6 @@ custom-card :is(a, p, h2, h3) {
 /* -------------------- variants --------------------  */
 
 /* no padding */
-
 custom-card[no-padding] {
   background-color: transparent;
   border: 4px solid var(--color-bg-accent);
@@ -75,13 +61,11 @@ custom-card[no-padding] {
 }
 
 /* squared image */
-
 custom-card[img-square] img {
   aspect-ratio: 1;
 }
 
 /* clickable */
-
 custom-card[clickable]:hover,
 custom-card[clickable]:focus-within {
   border: 4px solid var(--color-primary);
@@ -90,9 +74,11 @@ custom-card[clickable]:focus-within {
 custom-card[clickable]:focus-within a:focus {
   outline: none;
 }
+
 custom-card[clickable] {
   position: relative;
 }
+
 custom-card[clickable] a:after {
   bottom: 0;
   content: '';

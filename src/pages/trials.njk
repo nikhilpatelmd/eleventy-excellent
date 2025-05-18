@@ -14,11 +14,12 @@ permalink: '/trials/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNum
     <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
       <h1 class="text-center" style="color: var(--color-light);">{{ title }}</h1>
     </div>
-
   </header>
 
   <custom-masonry layout="50-50">
     {% for item in pagination.items %}
+      {% set headingLevel = "h2" %}
+      {% set definedDate = item.data.datePublished %}
       {% include "partials/card-trial.njk" %}
     {% endfor %}
   </custom-masonry>

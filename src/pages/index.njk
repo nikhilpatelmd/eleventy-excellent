@@ -2,7 +2,6 @@
 layout: base
 permalink: /index.html
 title: 'CritLit'
-description: 'Your concise guide to influential critical care literature and evidence-based practice'
 customHeader: true
 blog:
   title: 'Latest Trial Summaries'
@@ -17,27 +16,32 @@ blog:
     </header>
 
     <!-- Hero content with sidebar layout -->
-    <div class="wrapper region" style="--region-space-top: var(--space-xl); --region-space-bottom: var(--space-xl-2xl);">
+    <div class="wrapper region" style="--region-space-top: var(--space-xl); --region-space-bottom: var(--space-xl);">
       <div class="sidebar" style="--sidebar-target-width: 30rem; --sidebar-content-min-width: 40%;">
 
         <!-- Left column: Site description and intro -->
         <div class="flow prose">
           <h1 class="text-step-4">{{ meta.siteDescription }}</h1>
           <p class="text-step-1">
-            A dynamic repository of concise summaries and analyses of influential critical care literature, providing essential reference for evidence-based practice. Perfect for clinicians, students, and educators seeking to quickly understand key trials and their clinical implications.
+                CritLit provides summaries of influential critical care studies for clinicians, researchers, and students. Each trial is broken down into easy-to-understand components with key takeaways highlighted. Browse our latest summaries or explore by condition or topic below.
           </p>
         </div>
 
         <!-- Right column: Latest trial summaries -->
         <div class="flow">
-          <h2 class="text-step-2">{{ blog.title }}</h2>
-          <custom-masonry layout="50-50">
+          {# <h2 class="text-step-min-1 text-center">{{ blog.title }}</h2> #}
+          <div class="grid" style="--grid-min-item-size: 20rem; --gutter: var(--space-xs);">
             {% set itemList = collections.allTrials %}
-            {% asyncEach item in itemList.slice(0, 4) %}
-            {% set headingLevel = "h3" %}
-            {% include "partials/card-trial.njk" %}
-            {% endeach %}
-          </custom-masonry>
+            {% for item in itemList.slice(0, 4) %}
+              {% set headingLevel = "h3" %}
+              {% set definedDate = item.data.datePublished %}
+              {% set isCompact = true %}
+              {% include "partials/card-trial.njk" %}
+            {% endfor %}
+          </div>
+          <div class="text-center" style="margin-top: var(--space-m);">
+            <a href="/trials/" class="button">View All Trials</a>
+          </div>
         </div>
       </div>
     </div>
