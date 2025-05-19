@@ -7,21 +7,18 @@ journal: 'New England Journal of Medicine'
 doi: '10.1056/NEJMoa2313040'
 pmid: '38265648' # PMID for the NEJM publication
 rctIdentifier: 'NCT03661528'
-fundingSource: 'Alexion, AstraZeneca Rare Disease (formerly Portola Pharmaceuticals)' # Manufacturer of andexanet alfa
+fundingSource: 'Alexion, AstraZeneca Rare Disease (formerly Portola Pharmaceuticals)'
 conditions: ["Intracerebral Hemorrhage"]
 
-topics:
-  [
-    'Hemostasis',
-    'Reversal Agents',
-    'Anticoagulant Reversal',
-    'Factor Xa Inhibitor Reversal',
-    'Andexanet Alfa'
-  ]
+topics: ['Hemostasis', 'Anticoagulation Reversal']
 
 # General tags:
-tags: ["stroke", "bleeding", "pharmacotherapy", "DOAC reversal"]
+tags: 
 # layout: trial # Assumed from src/trials/trials.11tydata.json
+
+pico: 'In adult patients with acute major bleeding (including ICH) associated with recent use of a factor Xa inhibitor, does andexanet alfa, compared with usual care, result in better hemostatic efficacy and improved clinical outcomes?'
+
+gist: 'The ANNEXA-I trial evaluated the efficacy and safety of andexanet alfa for reversing anticoagulation in patients with acute major bleeding associated with factor Xa inhibitors, including intracerebral hemorrhage (ICH). This multicenter, randomized, open-label trial enrolled 530 adult patients presenting with major bleeding (ICH in 67%) who had recently received apixaban, rivaroxaban, edoxaban, or enoxaparin. Patients were assigned to receive andexanet alfa (bolus plus 2-hour infusion) or usual care (which could include PCCs). The primary outcome, hemostatic efficacy (based on bleeding control and reduction in anti-Xa activity), was achieved in a significantly higher proportion of patients in the andexanet alfa group (69.8%) compared to the usual-care group (57.0%) (adjusted risk difference, 13.4 percentage points; 95% CI, 4.6 to 22.2; p=0.003). In the ICH subgroup, good or excellent hemostasis was seen in 78.5% with andexanet vs. 60.0% with usual care. While andexanet rapidly reduced anti-Xa activity, there was no significant difference in 30-day mortality or functional outcomes in ICH patients. Thrombotic events within 30 days occurred in 10.3% of andexanet patients and 6.0% of usual-care patients. The trial concluded that andexanet alfa was superior to usual care in achieving hemostatic efficacy but was associated with more thrombotic events, without a clear impact on clinical outcomes like mortality or functional recovery in the overall or ICH population at 30 days.'
 
 # Trial details
 studyDesign: 'Randomized Controlled Trial (RCT), Multicenter, International, Open-label, Blinded Endpoint Adjudication'
@@ -42,7 +39,6 @@ keyExclusionCriteria:
   - 'Hypersensitivity to andexanet alfa or its components'
 interventionDetails: 'Andexanet alfa: Intravenous bolus followed by a 2-hour infusion. Dose (low or high) depended on the specific factor Xa inhibitor, dose, and time since last intake. Plus standard supportive care.'
 controlDetails: 'Usual-care group: Received standard treatments for bleeding management as per institutional guidelines, which could include prothrombin complex concentrates (PCCs), fresh frozen plasma (FFP), or supportive care without specific reversal agents. No andexanet alfa.'
-pico: 'In adult patients with acute major bleeding (including ICH) associated with recent use of a factor Xa inhibitor, does andexanet alfa, compared with usual care, result in better hemostatic efficacy and improved clinical outcomes?'
 primaryOutcome: 'Hemostatic efficacy, defined as achieving both: 1) ≤20% increase in intracranial hematoma volume or ≤35% increase in hematoma volume for ICH patients (depending on ICH type) or cessation of extracranial bleeding, AND 2) ≥50% reduction in anti-factor Xa activity from baseline to nadir (1-2 hours after infusion end or 12 hours after randomization for usual care). Assessed from randomization through 12 hours.'
 secondaryOutcomes:
   - 'Change in anti-factor Xa activity from baseline'
@@ -51,7 +47,6 @@ secondaryOutcomes:
   - 'Functional outcome (mRS) at 30 days (for ICH patients)'
   - 'Thrombotic events within 30 days'
   - 'Serious adverse events'
-gist: 'The ANNEXA-I trial evaluated the efficacy and safety of andexanet alfa for reversing anticoagulation in patients with acute major bleeding associated with factor Xa inhibitors, including intracerebral hemorrhage (ICH). This multicenter, randomized, open-label trial enrolled 530 adult patients presenting with major bleeding (ICH in 67%) who had recently received apixaban, rivaroxaban, edoxaban, or enoxaparin. Patients were assigned to receive andexanet alfa (bolus plus 2-hour infusion) or usual care (which could include PCCs). The primary outcome, hemostatic efficacy (based on bleeding control and reduction in anti-Xa activity), was achieved in a significantly higher proportion of patients in the andexanet alfa group (69.8%) compared to the usual-care group (57.0%) (adjusted risk difference, 13.4 percentage points; 95% CI, 4.6 to 22.2; p=0.003). In the ICH subgroup, good or excellent hemostasis was seen in 78.5% with andexanet vs. 60.0% with usual care. While andexanet rapidly reduced anti-Xa activity, there was no significant difference in 30-day mortality or functional outcomes in ICH patients. Thrombotic events within 30 days occurred in 10.3% of andexanet patients and 6.0% of usual-care patients. The trial concluded that andexanet alfa was superior to usual care in achieving hemostatic efficacy but was associated with more thrombotic events, without a clear impact on clinical outcomes like mortality or functional recovery in the overall or ICH population at 30 days.'
 
 # Commentary
 relatedCommentary:
